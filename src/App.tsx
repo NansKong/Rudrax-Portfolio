@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import Layout from './components/layout/Layout'
 import Navbar from './components/ui/Navbar'
 import Section from './components/ui/Section'
@@ -124,9 +124,51 @@ function BioSection() {
     );
 }
 
+function ScrollToTop() {
+    const [visible, setVisible] = useState(false)
+
+    useEffect(() => {
+        const onScroll = () => setVisible(window.scrollY > 300)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
+    return (
+        <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Scroll to top"
+            style={{
+                position: 'fixed',
+                bottom: '2rem',
+                right: '2rem',
+                zIndex: 999,
+                width: '3rem',
+                height: '3rem',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #a855f7, #ec4899)',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 0 20px rgba(168,85,247,0.5)',
+                opacity: visible ? 1 : 0,
+                pointerEvents: visible ? 'auto' : 'none',
+                transform: visible ? 'translateY(0) scale(1)' : 'translateY(12px) scale(0.85)',
+                transition: 'opacity 0.3s ease, transform 0.3s ease',
+            }}
+        >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 15l-6-6-6 6" />
+            </svg>
+        </button>
+    )
+}
+
 function App() {
     return (
         <Layout>
+            <ScrollToTop />
             <Navbar />
 
             <main className="relative z-10">
