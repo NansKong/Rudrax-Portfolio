@@ -1,0 +1,20 @@
+.liquid-ether-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glow depth */
+.liquid-ether-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+            rgba(0, 0, 0, 0) 40%,
+            rgba(0, 0, 0, 0.85) 75%);
+    pointer-events: none;
+}
