@@ -4,13 +4,13 @@ A premium 3D portfolio website built with React 18, Vite, TypeScript, Tailwind C
 
 ## Features
 
-- ✨ **Premium Design**: Dark, minimal, high-end aesthetic with glassmorphism effects
-- 🎨 **ReactBits Components**: Locally maintained UI components following ReactBits design patterns
-- 🎬 **3D Integration**: Immersive Three.js backgrounds via @react-three/fiber
-- ⚡ **Optimized Performance**: Lazy loading, code splitting, 60 FPS target
-- 📱 **Responsive**: Mobile-first design with breakpoint hooks
-- 🎭 **Smooth Animations**: Framer Motion and CSS animations
-- 🔍 **Accessibility**: Built with Radix UI primitives where needed
+- **Premium Design**: Dark, minimal, high-end aesthetic with glassmorphism effects
+- **ReactBits Components**: Locally maintained UI components following ReactBits design patterns
+- **3D Integration**: Immersive Three.js backgrounds via @react-three/fiber
+- **Optimized Performance**: Lazy loading, code splitting, 60 FPS target
+- **Responsive**: Mobile-first design with breakpoint hooks
+- **Smooth Animations**: Framer Motion and CSS animations
+- **Accessibility**: Built with Radix UI primitives where needed
 
 ## Tech Stack
 
