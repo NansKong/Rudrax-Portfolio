@@ -23,7 +23,7 @@ function Navbar() {
         { href: '#projects', label: 'Projects' },
     ]
 
-    const resumeLink = 'https://drive.google.com/file/d/1uKPr_fQkYutkREmIrffBquFMkFjA3H7e/view?usp=sharing'
+    const resumeLink = 'https://drive.google.com/file/d/1o3J1R6fWFTtGQbzrdFhDQFoVP6x26Q08/view?usp=sharing'
 
     const handleLinkClick = () => {
         setIsMobileMenuOpen(false)
