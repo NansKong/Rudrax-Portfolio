@@ -104,7 +104,7 @@ function BioSection() {
                     Get In Touch
                 </a>
                 <a
-                    href="https://drive.google.com/file/d/1uKPr_fQkYutkREmIrffBquFMkFjA3H7e/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1o3J1R6fWFTtGQbzrdFhDQFoVP6x26Q08/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
