@@ -26,6 +26,17 @@ interface ScrollStackProps {
   onStackComplete?: () => void;
 }
 
+/**
+ * Returns a stable viewport height that doesn't fluctuate with mobile
+ * browser chrome (address bar appearing / disappearing).
+ * Uses window.innerHeight as fallback for browsers without visualViewport.
+ */
+function getStableVH(): number {
+  // visualViewport.height is the pinned visible area — excludes browser chrome
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (window as any).visualViewport?.height ?? window.innerHeight;
+}
+
 const ScrollStack = ({
   children,
   className = '',
@@ -38,7 +49,7 @@ const ScrollStack = ({
   scaleDuration: _scaleDuration = 0.5,
   rotationAmount = 0,
   blurAmount = 0,
-  useWindowScroll = false,
+  useWindowScroll: _useWindowScroll = false,
   onStackComplete,
 }: ScrollStackProps) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -49,6 +60,8 @@ const ScrollStack = ({
   // Cached document-relative offsets — computed once, never during scroll
   const cardOffsetsRef = useRef<number[]>([]);
   const endOffsetRef = useRef(0);
+  // Stable viewport height — won't jitter when mobile address bar hides
+  const stableVHRef = useRef(getStableVH());
 
   const parsePercentage = useCallback((value: string | number, containerHeight: number) => {
     if (typeof value === 'string' && value.includes('%')) {
@@ -62,8 +75,10 @@ const ScrollStack = ({
     const cards = cardsRef.current;
     if (!cards.length) return;
 
+    // Snapshot stable viewport height at measure time
+    stableVHRef.current = getStableVH();
+
     cardOffsetsRef.current = cards.map(card => {
-      // offsetTop walks up offsetParents — no reflow if transforms haven't changed
       let top = 0;
       let el: HTMLElement | null = card;
       while (el) {
@@ -92,7 +107,8 @@ const ScrollStack = ({
     if (!cards.length || offsets.length !== cards.length) return;
 
     const scrollTop = window.scrollY;
-    const containerHeight = window.innerHeight;
+    // Use the stable cached VH — never recalculate during scroll to prevent jitter
+    const containerHeight = stableVHRef.current;
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
     const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
     const endElementTop = endOffsetRef.current;
@@ -196,15 +212,42 @@ const ScrollStack = ({
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     // Re-measure on resize (layout may shift)
+    // Use a debounce timer so rapid mobile resize events don't thrash layout
+    let resizeTimer: ReturnType<typeof setTimeout> | null = null;
     const onResize = () => {
-      measureOffsets();
-      handleScroll();
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        measureOffsets();
+        handleScroll();
+      }, 150);
     };
     window.addEventListener('resize', onResize, { passive: true });
+
+    // Mobile orientation change fires before the browser completes relayout.
+    // Wait 300 ms to let the browser finish before re-measuring.
+    const onOrientationChange = () => {
+      setTimeout(() => {
+        measureOffsets();
+        handleScroll();
+      }, 300);
+    };
+    window.addEventListener('orientationchange', onOrientationChange);
+
+    // visualViewport resize — fires when mobile address bar shows/hides.
+    // We DON'T re-measure here (that would cause jitter); we only update
+    // the stable VH so that the NEXT explicit resize/orientationchange picks it up.
+    const vv = (window as unknown as { visualViewport?: { addEventListener: (e: string, cb: () => void) => void; removeEventListener: (e: string, cb: () => void) => void } }).visualViewport;
+    const onVVResize = () => {
+      stableVHRef.current = getStableVH();
+    };
+    vv?.addEventListener('resize', onVVResize);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onOrientationChange);
+      vv?.removeEventListener('resize', onVVResize);
+      if (resizeTimer) clearTimeout(resizeTimer);
       if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
       stackCompletedRef.current = false;
       rafPendingRef.current = false;

@@ -15,9 +15,12 @@
 
 .scroll-stack-card {
   transform-origin: top center;
-  will-change: transform, filter;
+  will-change: transform;
+  /* Removed transform-style: preserve-3d — it creates a stacking context that
+     conflicts with translateZ(0) promotion and causes compositing glitches on
+     mobile Safari / Chrome. We only need 2-D transforms here. */
   backface-visibility: hidden;
-  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
   height: auto;
   min-height: 22rem;
   width: 100%;
@@ -25,8 +28,6 @@
   padding: 0;
   border-radius: 28px;
   box-sizing: border-box;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
   position: relative;
   /* Glass card look matching the portfolio */
   background: rgba(255, 255, 255, 0.03);
@@ -35,6 +36,17 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* On mobile, reduce backdrop-filter blur to relieve GPU pressure during
+   scroll animations — this is a common source of mobile jitter. */
+@media (max-width: 768px) {
+  .scroll-stack-card {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    min-height: 18rem;
+    border-radius: 20px;
+  }
 }
 
 .scroll-stack-end {
