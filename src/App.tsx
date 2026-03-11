@@ -4,6 +4,7 @@ import Navbar from './components/ui/Navbar'
 import Section from './components/ui/Section'
 import LogoLoop, { type LogoItem } from './components/ui/LogoLoop'
 import ScrollStack, { ScrollStackItem } from './components/ui/ScrollStack'
+import { ProjectShowcase } from './components/ui/ProjectShowcase'
 
 const row1Skills = [
     { src: '/assets/images/python.svg', alt: 'Python', title: 'Python' },
@@ -361,10 +362,9 @@ function App() {
                             id="projects"
                             className=""
                         >
-                            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 pb-36">
-
-                                {/* Section Title */}
-                                <div className="text-center mb-16 pt-24">
+                            {/* Section Title — contained */}
+                            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12 pt-24">
+                                <div className="text-center mb-16">
                                     <h2 className="
                                         text-4xl md:text-6xl lg:text-7xl
                                         font-black mb-4
@@ -378,8 +378,12 @@ function App() {
                                         A selection of production-ready systems and experiments that showcase my range across AI, automation, and blockchain.
                                     </p>
                                 </div>
+                            </div>
 
-                                {/* ScrollStack Project Cards */}
+                            {/* ────────────────────────────────────────────
+                                ScrollStack — 4 hero projects
+                                ──────────────────────────────────────── */}
+                            <div className="relative z-10 w-full max-w-4xl mx-auto px-6 lg:px-12">
                                 <ScrollStack
                                     useWindowScroll={true}
                                     itemDistance={80}
@@ -389,302 +393,7 @@ function App() {
                                     scaleEndPosition="10%"
                                     baseScale={0.9}
                                 >
-
-                                    {/* Card 1 — Production Travel Automation */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Production-Travel-Automation-"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-purple-500/15 border border-purple-500/25 text-purple-400">AUTOMATION</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-purple-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
-                                                    Production Travel Automation Engine
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    AI-powered n8n workflow that fully automates travel quotation — from client request intake to vendor coordination, dynamic pricing, PDF proposal generation, and automated client delivery.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['n8n', 'GPT-4', 'PostgreSQL', 'Python', 'AI Automation'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 border border-purple-500/20 text-purple-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 2 — Automated Startup Outreach System */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Automated-Startup-Outreach-System"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-orange-500/20 border border-pink-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-pink-500/15 border border-pink-500/25 text-pink-400">OUTREACH</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-pink-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-pink-300 transition-colors">
-                                                    Automated Startup Outreach System
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    Discovers newly registered Indian startups, enriches their data via n8n workflows, generates personalized AI-written messages, and sends automated email & WhatsApp outreach at scale — zero manual work.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['Python', 'n8n', 'AI/LLM', 'WhatsApp API', 'Scraping'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-pink-500/10 border border-pink-500/20 text-pink-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 3 — Blockchain Integrated File System */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Blockchain-Integrated-File-System"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-blue-500/15 border border-blue-500/25 text-blue-400">BLOCKCHAIN</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-blue-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
-                                                    Blockchain-Integrated File System
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    Decentralized file storage and transfer system using Ethereum smart contracts (Solidity) and IPFS. File metadata is immutably recorded on-chain, while content lives on IPFS — bridged by a Python backend for secure, tamper-proof tracking.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['Ethereum', 'Solidity', 'IPFS', 'Python', 'Web3'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 border border-blue-500/20 text-blue-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 4 — 3D Portfolio Website */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Rudrax-s-Portfolio"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer relative overflow-hidden"
-                                        >
-                                            <div className="absolute top-5 right-5 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-emerald-500/20 border border-emerald-500/30 text-emerald-400">✦ THIS SITE</div>
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                                    </svg>
-                                                </div>
-                                                <svg className="w-5 h-5 text-gray-500 group-hover:text-emerald-400 transition-colors shrink-0 mr-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">
-                                                    3D Portfolio Website
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    This very site — a modern, immersive 3D portfolio built with React, Three.js, and Vite. Features an animated liquid-ether background, glassmorphism UI, smooth scroll sections, and a skills marquee. Designed to wow at first glance.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['React', 'Three.js', 'TypeScript', 'Vite', 'Tailwind CSS'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 5 — Diabetes Prediction Model */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Diabetes-Prediction-Model"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/20 border border-violet-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-violet-500/15 border border-violet-500/25 text-violet-400">ML MODEL</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-violet-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-violet-300 transition-colors">
-                                                    Diabetes Prediction Model
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    A machine learning pipeline for clinical diabetes risk prediction. Covers full data preprocessing, feature engineering, model training, evaluation, and a Flask API for serving predictions — built for real-world interpretability and accuracy.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['Python', 'Scikit-Learn', 'Pandas', 'Flask', 'ML'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 border border-violet-500/20 text-violet-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 6 — Meetings Transcription Automation */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/meetings-transcription-automation"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-amber-500/15 border border-amber-500/25 text-amber-400">TRANSCRIPTION</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-amber-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors">
-                                                    Meetings Transcription Automation
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    Fully automated pipeline that records, transcribes, and summarizes meeting audio using Whisper and GPT. Integrates with n8n for end-to-end workflow orchestration — auto-sending summaries and action items to participants.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['Python', 'Whisper', 'GPT-4', 'n8n', 'Automation'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 border border-amber-500/20 text-amber-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 7 — Campus Management System */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Campus-Management-System"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-sky-500/20 border border-cyan-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-cyan-500/15 border border-cyan-500/25 text-cyan-400">FULL-STACK</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
-                                                    Campus Management System
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    A full-stack web application for managing campus operations — students, faculty, courses, attendance, and timetables — built with Django REST Framework and a PostgreSQL backend. Features role-based access control and a clean admin dashboard.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['Python', 'Django', 'PostgreSQL', 'REST API', 'Web App'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 8 — LeetCode Problem Solver Bot */}
-                                    <ScrollStackItem>
-                                        <a
-                                            href="https://github.com/NansKong/Leetcode-Problem-Solver-Bot"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
-                                        >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/20 to-red-500/20 border border-rose-500/30 flex items-center justify-center shrink-0">
-                                                    <svg className="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                                    </svg>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-rose-500/15 border border-rose-500/25 text-rose-400">AI BOT</span>
-                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-rose-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-rose-300 transition-colors">
-                                                    LeetCode Problem Solver Bot
-                                                </h3>
-                                                <p className="text-gray-400 leading-relaxed">
-                                                    An LLM-powered bot that autonomously reads LeetCode problems, reasons through optimal approaches, generates clean Python solutions with explanations, and can interact with the platform — your AI pair programmer for competitive coding.
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-auto">
-                                                {['Python', 'GPT-4', 'LLM', 'Automation', 'Agents'].map(tag => (
-                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-rose-500/10 border border-rose-500/20 text-rose-300">{tag}</span>
-                                                ))}
-                                            </div>
-                                        </a>
-                                    </ScrollStackItem>
-
-                                    {/* Card 9 — BharatAI */}
+                                    {/* Card 1 — BharatAI */}
                                     <ScrollStackItem>
                                         <a
                                             href="https://github.com/NansKong/BharatAI"
@@ -707,9 +416,7 @@ function App() {
                                                 </div>
                                             </div>
                                             <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">
-                                                    BharatAI
-                                                </h3>
+                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">BharatAI</h3>
                                                 <p className="text-gray-400 leading-relaxed">
                                                     A production-grade AI-powered opportunity platform connecting Indian students with internships, jobs, and grants. Full-stack system with FastAPI, PostgreSQL, Redis, Celery task queues, an InCoScore ranking algorithm, and a React frontend.
                                                 </p>
@@ -722,12 +429,197 @@ function App() {
                                         </a>
                                     </ScrollStackItem>
 
+                                    {/* Card 2 — 3D Portfolio */}
+                                    <ScrollStackItem>
+                                        <a
+                                            href="https://github.com/NansKong/Rudrax-s-Portfolio"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer relative overflow-hidden"
+                                        >
+                                            <div className="absolute top-5 right-5 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-emerald-500/20 border border-emerald-500/30 text-emerald-400">✦ THIS SITE</div>
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                                                    <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                                    </svg>
+                                                </div>
+                                                <svg className="w-5 h-5 text-gray-500 group-hover:text-emerald-400 transition-colors shrink-0 mr-20" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">3D Portfolio Website</h3>
+                                                <p className="text-gray-400 leading-relaxed">
+                                                    This very site — a modern, immersive 3D portfolio built with React, Three.js, and Vite. Features an animated liquid-ether background, glassmorphism UI, smooth scroll sections, and a skills marquee. Designed to wow at first glance.
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-wrap gap-2 mt-auto">
+                                                {['React', 'Three.js', 'TypeScript', 'Vite', 'Tailwind CSS'].map(tag => (
+                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">{tag}</span>
+                                                ))}
+                                            </div>
+                                        </a>
+                                    </ScrollStackItem>
+
+                                    {/* Card 3 — Meetings Transcription */}
+                                    <ScrollStackItem>
+                                        <a
+                                            href="https://github.com/NansKong/meetings-transcription-automation"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
+                                        >
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
+                                                    <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                                                    </svg>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-amber-500/15 border border-amber-500/25 text-amber-400">TRANSCRIPTION</span>
+                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-amber-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-amber-300 transition-colors">Meetings Transcription Automation</h3>
+                                                <p className="text-gray-400 leading-relaxed">
+                                                    Fully automated pipeline that records, transcribes, and summarizes meeting audio using Whisper and GPT. Integrates with n8n for end-to-end workflow orchestration — auto-sending summaries and action items to participants.
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-wrap gap-2 mt-auto">
+                                                {['Python', 'Whisper', 'GPT-4', 'n8n', 'Automation'].map(tag => (
+                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 border border-amber-500/20 text-amber-300">{tag}</span>
+                                                ))}
+                                            </div>
+                                        </a>
+                                    </ScrollStackItem>
+
+                                    {/* Card 4 — Diabetes Prediction */}
+                                    <ScrollStackItem>
+                                        <a
+                                            href="https://github.com/NansKong/Diabetes-Prediction-Model"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex flex-col gap-5 p-8 h-full group cursor-pointer"
+                                        >
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-purple-500/20 border border-violet-500/30 flex items-center justify-center shrink-0">
+                                                    <svg className="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                                    </svg>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-violet-500/15 border border-violet-500/25 text-violet-400">ML MODEL</span>
+                                                    <svg className="w-5 h-5 text-gray-500 group-hover:text-violet-400 transition-colors shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.8}>
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-violet-300 transition-colors">Diabetes Prediction Model</h3>
+                                                <p className="text-gray-400 leading-relaxed">
+                                                    A machine learning pipeline for clinical diabetes risk prediction. Covers full data preprocessing, feature engineering, model training, evaluation, and a Flask API for serving predictions — built for real-world interpretability and accuracy.
+                                                </p>
+                                            </div>
+                                            <div className="flex flex-wrap gap-2 mt-auto">
+                                                {['Python', 'Scikit-Learn', 'Pandas', 'Flask', 'ML'].map(tag => (
+                                                    <span key={tag} className="px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 border border-violet-500/20 text-violet-300">{tag}</span>
+                                                ))}
+                                            </div>
+                                        </a>
+                                    </ScrollStackItem>
                                 </ScrollStack>
+                            </div>
 
-
-
+                            {/* ────────────────────────────────────────────
+                                Full-width auto-changing showcase
+                                ──────────────────────────────────────── */}
+                            <div className="relative z-10 w-full px-6 lg:px-12 pb-36 mt-24">
+                                <div className="text-center mb-8">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-gray-300 mb-2">More Projects</h3>
+                                    <div className="w-16 h-0.5 bg-gradient-to-r from-purple-500/50 to-pink-500/50 mx-auto rounded-full" />
+                                </div>
+                                <ProjectShowcase
+                                    autoPlayInterval={4500}
+                                    projects={[
+                                        {
+                                            id: 'travel',
+                                            title: 'Production Travel Automation Engine',
+                                            description: 'AI-powered n8n workflow that fully automates travel quotation — from client request intake to vendor coordination, dynamic pricing, PDF proposal generation, and automated client delivery.',
+                                            tags: ['n8n', 'GPT-4', 'PostgreSQL', 'Python', 'AI Automation'],
+                                            link: 'https://github.com/NansKong/Production-Travel-Automation-',
+                                            badge: 'AUTOMATION',
+                                            accentColor: 'purple',
+                                            icon: (
+                                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                </svg>
+                                            ),
+                                        },
+                                        {
+                                            id: 'outreach',
+                                            title: 'Automated Startup Outreach System',
+                                            description: 'Discovers newly registered Indian startups, enriches their data via n8n workflows, generates personalized AI-written messages, and sends automated email & WhatsApp outreach at scale — zero manual work.',
+                                            tags: ['Python', 'n8n', 'AI/LLM', 'WhatsApp API', 'Scraping'],
+                                            link: 'https://github.com/NansKong/Automated-Startup-Outreach-System',
+                                            badge: 'OUTREACH',
+                                            accentColor: 'pink',
+                                            icon: (
+                                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                                </svg>
+                                            ),
+                                        },
+                                        {
+                                            id: 'blockchain',
+                                            title: 'Blockchain-Integrated File System',
+                                            description: 'Decentralized file storage and transfer system using Ethereum smart contracts (Solidity) and IPFS. File metadata is immutably recorded on-chain, while content lives on IPFS — bridged by a Python backend for secure, tamper-proof tracking.',
+                                            tags: ['Ethereum', 'Solidity', 'IPFS', 'Python', 'Web3'],
+                                            link: 'https://github.com/NansKong/Blockchain-Integrated-File-System',
+                                            badge: 'BLOCKCHAIN',
+                                            accentColor: 'blue',
+                                            icon: (
+                                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                                </svg>
+                                            ),
+                                        },
+                                        {
+                                            id: 'campus',
+                                            title: 'Campus Management System',
+                                            description: 'A full-stack web application for managing campus operations — students, faculty, courses, attendance, and timetables — built with Django REST Framework and a PostgreSQL backend. Features role-based access control and a clean admin dashboard.',
+                                            tags: ['Python', 'Django', 'PostgreSQL', 'REST API', 'Web App'],
+                                            link: 'https://github.com/NansKong/Campus-Management-System',
+                                            badge: 'FULL-STACK',
+                                            accentColor: 'cyan',
+                                            icon: (
+                                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+                                                </svg>
+                                            ),
+                                        },
+                                        {
+                                            id: 'leetcode',
+                                            title: 'LeetCode Problem Solver Bot',
+                                            description: 'An LLM-powered bot that autonomously reads LeetCode problems, reasons through optimal approaches, generates clean Python solutions with explanations, and can interact with the platform — your AI pair programmer for competitive coding.',
+                                            tags: ['Python', 'GPT-4', 'LLM', 'Automation', 'Agents'],
+                                            link: 'https://github.com/NansKong/Leetcode-Problem-Solver-Bot',
+                                            badge: 'AI BOT',
+                                            accentColor: 'rose',
+                                            icon: (
+                                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                                </svg>
+                                            ),
+                                        },
+                                    ]}
+                                />
                             </div>
                         </Section>
+
 
                         {/* Blur overlay at bottom */}
                         <div
@@ -745,39 +637,7 @@ function App() {
                     </div>
                 </div>
 
-                {/* View all projects — standalone, outside ScrollStack so cards can never overlap */}
-                <div style={{ position: 'relative', zIndex: 30, textAlign: 'center', padding: '4rem 1.5rem 3rem' }}>
-                    <a
-                        href="https://github.com/NansKong"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            padding: '0.75rem 2rem',
-                            borderRadius: '9999px',
-                            border: '1px solid rgba(168,85,247,0.4)',
-                            color: '#c084fc',
-                            fontWeight: 500,
-                            textDecoration: 'none',
-                            transition: 'all 0.3s ease',
-                        }}
-                        onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(168,85,247,0.1)';
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(168,85,247,0.8)';
-                        }}
-                        onMouseLeave={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.background = '';
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(168,85,247,0.4)';
-                        }}
-                    >
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                        </svg>
-                        View All Projects on GitHub
-                    </a>
-                </div>
+
 
                 {/* Contact Section */}
                 <div style={{ position: 'relative' }}>
