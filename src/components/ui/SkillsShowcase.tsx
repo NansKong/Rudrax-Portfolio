@@ -36,7 +36,6 @@ export const skillsRow2 = [
     { name: "n8n", Icon: FaBrain, color: "#FF6D5A" },
 ];
 
-// Row 3: Fullstack Development
 export const skillsRow3 = [
     { name: "React", Icon: SiReact, color: "#61DAFB" },
     { name: "Next.js", Icon: SiNextdotjs, color: "#ffffff" },
@@ -46,6 +45,7 @@ export const skillsRow3 = [
     { name: "FastAPI", Icon: SiFastapi, color: "#009688" },
     { name: "Flask", Icon: SiFlask, color: "#ffffff" },
     { name: "Django", Icon: SiDjango, color: "#092E20" },
+    { name: "REST API", Icon: FaNetworkWired, color: "#00E676" },
     { name: "PostgreSQL", Icon: SiPostgresql, color: "#4169E1" },
     { name: "MongoDB", Icon: SiMongodb, color: "#47A248" },
     { name: "Redis", Icon: SiRedis, color: "#DC382D" },
