@@ -1,0 +1,88 @@
+.skills-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    width: 100vw; /* Ensuring it strictly takes full width if needed, or 100% of parent container */
+    margin-left: calc(-50vw + 50%); /* A tricky way to breakout of horizontal max-w constraints if any, or we can rely on standard 100% */
+    /* wait, the parent was max-w-6xl. Let's make it 100% of the container to be safe, or break out */
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem 0;
+}
+
+/* Let's break out of the max-width container natively */
+.skills-showcase-wrapper {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.marquee-container {
+    width: 100%;
+    /* removed overflow: hidden to prevent shadow clipping */
+    display: flex;
+    position: relative;
+    /* Soft edges using mask */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll var(--marquee-speed, 30s) linear infinite;
+    align-items: center;
+}
+
+.marquee-track-reverse {
+    animation-direction: reverse;
+}
+
+/* Pause animation on hover */
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+    /* Translate exactly one-third since we duplicated the list 3 times */
+    to {
+        transform: translateX(-33.33333%);
+    }
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 4rem; /* Additional vertical padding to give shadow room */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+    color: rgba(209, 213, 219, 0.7); /* muted gray */
+    cursor: default;
+    user-select: none;
+}
+
+.skill-icon {
+    font-size: 2.5rem;
+    transition: filter 0.3s ease;
+    filter: drop-shadow(0 0 0 transparent);
+}
+
+.skill-label {
+    font-size: 1.25rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.skill-item:hover {
+    transform: scale(1.15); /* Slightly less dramatic scale */
+    color: var(--brand-color, #ffffff);
+    z-index: 10;
+}
+
+.skill-item:hover .skill-icon {
+    /* Softer, more diffuse shadow to prevent color burst */
+    filter: drop-shadow(0 0 10px var(--brand-color, #ffffff));
+}

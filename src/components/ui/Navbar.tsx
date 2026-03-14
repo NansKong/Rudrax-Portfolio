@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 /**
  * Modern AI/ML Portfolio Navbar
@@ -17,10 +18,15 @@ function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    const location = useLocation()
+    const isHomePage = location.pathname === '/'
+
     const navLinks = [
-        { href: '#hero', label: 'Home' },
-        { href: '#about', label: 'About' },
-        { href: '#projects', label: 'Projects' },
+        { href: isHomePage ? '#hero' : '/#hero', label: 'Home' },
+        { href: isHomePage ? '#about' : '/#about', label: 'About' },
+        { href: isHomePage ? '#skills' : '/#skills', label: 'Skills' },
+        { href: isHomePage ? '#projects' : '/#projects', label: 'Projects' },
+        { href: '/certifications', label: 'Certifications' }
     ]
 
     const resumeLink = 'https://drive.google.com/file/d/1o3J1R6fWFTtGQbzrdFhDQFoVP6x26Q08/view?usp=sharing'
@@ -49,7 +55,7 @@ function Navbar() {
                 >
                     {/* Logo */}
                     <a
-                        href="#hero"
+                        href={isHomePage ? '#hero' : '/'}
                         className="
                             text-xl font-semibold tracking-tight
                             bg-gradient-to-r from-purple-400 via-purple-500 to-pink-500
@@ -115,7 +121,7 @@ function Navbar() {
 
                     {/* CTA Button */}
                     <a
-                        href="#contact"
+                        href={isHomePage ? '#contact' : '/#contact'}
                         className="
                             px-5 py-2
                             rounded-full
@@ -146,7 +152,7 @@ function Navbar() {
                 >
                     {/* Logo */}
                     <a
-                        href="#hero"
+                        href={isHomePage ? '#hero' : '/'}
                         onClick={handleLinkClick}
                         className="
                             text-lg font-semibold tracking-tight
@@ -252,7 +258,7 @@ function Navbar() {
 
                         {/* Mobile CTA Button */}
                         <a
-                            href="#contact"
+                            href={isHomePage ? '#contact' : '/#contact'}
                             onClick={handleLinkClick}
                             className="
                                 block mt-4
