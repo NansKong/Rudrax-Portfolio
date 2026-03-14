@@ -144,15 +144,8 @@ const ScrollStack = ({
         }
       }
 
-      // Pin / translate
-      let translateY = 0;
-      if (scrollTop >= pinStart && scrollTop <= pinEnd) {
-        translateY = scrollTop - cardTop + stackPositionPx + itemStackDistance * i;
-      } else if (scrollTop > pinEnd) {
-        translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i;
-      }
-
-      card.style.transform = `translate3d(0,${translateY}px,0) scale(${scale}) rotate(${rotation}deg)`;
+      // Let native CSS sticky handle the translation pinning!
+      card.style.transform = `scale(${scale}) rotate(${rotation}deg)`;
       card.style.filter = blur > 0 ? `blur(${blur}px)` : '';
 
       if (i === cards.length - 1) {
@@ -198,8 +191,13 @@ const ScrollStack = ({
     // Initial style setup
     cards.forEach((card, i) => {
       if (i < cards.length - 1) card.style.marginBottom = `${itemDistance}px`;
-      card.style.willChange = 'transform';
+      card.style.willChange = 'transform, filter';
       card.style.transformOrigin = 'top center';
+      // Native Sticky CSS
+      card.style.position = 'sticky';
+      card.style.top = typeof stackPosition === 'number' 
+        ? `${stackPosition + itemStackDistance * i}px`
+        : `calc(${stackPosition} + ${itemStackDistance * i}px)`;
     });
 
     // Measure once after layout is ready

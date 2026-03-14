@@ -299,7 +299,7 @@ function LandingPage() {
 
                 {/* Projects Section */}
                 <div style={{ position: 'relative' }}>
-                    <div style={{ position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', overflow: 'clip' }}>
                         <Section
                             id="projects"
                             className=""
